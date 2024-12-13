@@ -4,12 +4,14 @@ import 'screens/login_screen.dart';
 import 'screens/registro_screen.dart';
 import 'screens/comentarios_screen.dart';
 import 'screens/lista_series_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // Inicializar Firebase aquí
-  // await Firebase.initializeApp();
-
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MyApp());
 }
 
