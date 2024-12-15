@@ -30,9 +30,16 @@ class MyApp extends StatelessWidget {
         '/login': (context) => LoginScreen(),
         '/registro': (context) => RegistroScreen(),
         '/comentarios': (context) => ListaNotasScreen(),
-        '/lista_series': (context) => DetallesNotaScreen(),
-         '/nueva_nota': (context) => NuevaNotaScreen(),
-         
+        '/nueva_nota': (context) => NuevaNotaScreen(),
+      },
+      onGenerateRoute: (settings) {
+        if (settings.name == '/lista_series') {
+          final nota = settings.arguments as Map<String, dynamic>;
+          return MaterialPageRoute(
+            builder: (context) => DetallesNotaScreen(nota: nota),
+          );
+        }
+        return null;
       },
     );
   }

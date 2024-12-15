@@ -1,7 +1,6 @@
 import 'package:evaluacion2/screens/detalles_notas.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:evaluacion2/screens/detalles_notas.dart';
 
 class ListaNotasScreen extends StatefulWidget {
   @override
@@ -11,7 +10,9 @@ class ListaNotasScreen extends StatefulWidget {
 class _ListaNotasScreenState extends State<ListaNotasScreen> {
   final DatabaseReference _notasRef = FirebaseDatabase.instance.ref("notas");
   late DatabaseEvent _notasEvent;
-  List<Map<dynamic, dynamic>> _notasList = [];
+  
+  // Cambiar a Map<String, dynamic>
+  List<Map<String, dynamic>> _notasList = [];
 
   @override
   void initState() {
@@ -22,6 +23,7 @@ class _ListaNotasScreenState extends State<ListaNotasScreen> {
         final data = event.snapshot.value as Map<dynamic, dynamic>?;
         if (data != null) {
           data.forEach((key, value) {
+            // Aquí aseguramos que las claves y los valores sean del tipo adecuado
             _notasList.add({
               "id": key,
               "titulo": value['titulo'],
