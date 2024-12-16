@@ -1,6 +1,8 @@
+import 'package:evaluacion2/screens/lista_notas.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
+//import 'dart:async';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -47,7 +49,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     password: passwordController.text,
                   );
                   // Si el login es exitoso, redirigir a comentarios
-                  Navigator.pushNamed(context, '/comentarios');
+                  //Navigator.pushNamed(context, '/lista_notas');
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> ListaNotasScreen()));
                 } on FirebaseAuthException catch (e) {
                   // Mostrar error si ocurre algún problema
                   setState(() {
